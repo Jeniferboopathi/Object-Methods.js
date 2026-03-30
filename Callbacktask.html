@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function placeOrder(item, callback) {
+            console.log(`Step 1: Order placed for ${item}.`);
+            setTimeout(() => {
+                callback(item);
+            }, 1000);
+        }
+        placeOrder("Pizza", (food) => {
+            console.log(`Step 2: Callback received! Enjoying my ${food}.`);
+        });
+        const myPromise = new Promise((resolve, reject) => {
+            const success = true;
+
+            setTimeout(() => {
+                if (success) {
+                    resolve("Promise Resolved: Data fetched successfully!");
+                } else {
+                    reject("Promise Rejected: Something went wrong.");
+                }
+            }, 2000);
+        });
+        myPromise
+            .then((data) => {
+                console.log("Success:", data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+            })
+            .finally(() => {
+                console.log("Operation attempt finished.");
+            });
+    </script>
+</body>
+
+</html>
